@@ -23,13 +23,10 @@ int main(void) {
     }
   }
 }
-
-float wallis_pi(int i){
-    float total=1;
-    int j;
-    for(j=1;j<=i;j++){
-        total=total*((4*(j*j))/((j-1)*(j+1)));
-    printf("%f",total);
-    return total;
-    }
+float wallis_pi(int k)
+{
+    float total = 1;
+	  for(int i=1; i<k+1;i++)
+		  total=total*(float)(4*i*i)/((4*i*i)-1);
+    return 2*total;
 }

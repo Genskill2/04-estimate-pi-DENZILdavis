@@ -6,7 +6,7 @@
 float mc_pi(int);
 
 float frandom() {
-  long int q = random();
+  long int q = rand();
   float ret = (float)q/(float)RAND_MAX;
   return ret;
 }
@@ -14,7 +14,7 @@ float frandom() {
 int main(void) {
   float pi0;
   float pi1;
-  
+  int i;
   pi0 = mc_pi(25000);
   pi1 = mc_pi(25000);
   printf("%f %f\n", pi0, pi1);
@@ -30,7 +30,7 @@ int main(void) {
   }
 
     
-  for (int i=2000; i<5000; i++) {
+  for ( i=2000; i<5000; i++) {
     pi0 = mc_pi(i);
     if (!(fabs(pi0 - M_PI) < 0.4)) {
       printf("Estimate with even %d iterations is %f which is not accurate enough.\n", i, pi0);
@@ -38,26 +38,17 @@ int main(void) {
     }
   }
 }
-float mc_pi(int i){
-    float area_circle=0;
-    float area_square=0;
-    float pi_apprx=0;
-    for(int j=1;j<=i;j++){
-         float x=frandom();
-         float y=frandom();
-         float distance=sqrt((x*x)+(y*y));
+float mc_pi(int k){
+    float x,y;
+    int a_circle=0;
+    for(int j=1;j<k;j++){
+         x=frandom();
+         y=frandom();
+         float distance=sqrt((float)((x*x)+(y*y)));
          if(distance<=1){
-             area_circle=area_circle+1;
+             a_circle=a_circle+1;
          }
-         else{
-             area_square=area_square+1;
-         }
-
     }
-    pi_apprx=4*(area_circle/area_square);
-    return pi_apprx;
+    return 4*((float)a_circle/(float)k);
+    
 }
-   
-
-
-
