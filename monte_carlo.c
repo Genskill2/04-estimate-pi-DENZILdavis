@@ -6,7 +6,7 @@
 float mc_pi(int);
 
 float frandom() {
-  long int q = random();
+  long int q = rand();
   float ret = (float)q/(float)RAND_MAX;
   return ret;
 }
@@ -38,6 +38,26 @@ int main(void) {
     }
   }
 }
+float mc_pi(int i){
+    float area_circle=0;
+    float area_square=0;
+    float pi_apprx=0;
+    for(int j=1;j<=i;j++){
+         float x=frandom();
+         float y=frandom();
+         float distance=sqrt((x*x)+(y*y));
+         if(distance<=1){
+             area_circle=area_circle+1;
+         }
+         else{
+             area_square=area_square+1;
+         }
+
+    }
+    pi_apprx=4*(area_circle/area_square);
+    return pi_apprx;
+}
+   
 
 
 
